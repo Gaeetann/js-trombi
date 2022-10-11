@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    Bonjouriruoruriuj
+    <div id="results"></div>
+    <div id="img"></div>
+    <script>
+        function load_students_via_api(students) {
+            console.log(students)
+            let ul = document.createElement("ul");
+            for (student of students) {
+                let li = document.createElement('li')
+                li.innerHTML += student;
+                ul.appendChild(li)
+            }
+            document.getElementById('results').appendChild(ul);
+
+            function load_data(eleve) {
+                console.log(eleve)
+                let thimage = document.createElement("div");
+            }
+            document.getElementById("img")
+
+
+        }
+        function load_Students() {
+            fetch('./etudiants.json')
+                .then(data => data.json())
+                .then((result => load_students_via_api(result.students)))
+        }
+
+        function load_Students_api() {
+            fetch('https://api.github.com/users/Gaeetann')
+                .then(data => data.json())
+                .then((result => load_data(result.eleve)))
+        }
+        load_Students()
+        load_Students_api()
+    </script>
+
+</body>
+
+</html>
